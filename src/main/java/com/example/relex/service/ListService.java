@@ -4,9 +4,7 @@ import com.example.relex.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.function.BiPredicate;
 
 @Service
@@ -82,32 +80,43 @@ public class ListService {
         int currentFrom = -1;
         int currentTo;
 
+
         for (int i = 1; i < list.size(); i++) {
             if (predicate.test(list.get(i - 1), list.get(i))) {
-                if (currentFrom == -1)
+                if (currentFrom == -1) {
                     currentFrom = i - 1;
-
+                }
                 if (i == list.size() - 1) {
                     currentTo = list.size();
 
                     if (currentTo - currentFrom > toIndex - fromIndex) {
                         fromIndex = currentFrom;
                         toIndex = currentTo;
+                        lists.clear();
+                        lists.add(list.subList(fromIndex, toIndex));
+                    } else if (currentTo - currentFrom == toIndex - fromIndex) {
+                        fromIndex = currentFrom;
+                        toIndex = currentTo;
+                        lists.add(list.subList(fromIndex, toIndex));
                     }
                 }
             } else {
                 currentTo = i;
 
-                if (currentTo - currentFrom > toIndex - fromIndex) {
-                    fromIndex = currentFrom;
-                    toIndex = currentTo;
+                if (currentFrom != -1) {
+                    if (currentTo - currentFrom > toIndex - fromIndex) {
+                        fromIndex = currentFrom;
+                        toIndex = currentTo;
+                        lists.clear();
+                        lists.add(list.subList(fromIndex, toIndex));
+                    } else if (currentTo - currentFrom == toIndex - fromIndex) {
+                        fromIndex = currentFrom;
+                        toIndex = currentTo;
+                        lists.add(list.subList(fromIndex, toIndex));
+                    }
                 }
                 currentFrom = -1;
             }
-        }
-
-        if (fromIndex > -1) {
-            lists.add(list.subList(fromIndex, toIndex));
         }
         return lists;
     }

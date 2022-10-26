@@ -40,12 +40,14 @@ public class FileController {
     }
 
     @GetMapping("/get_longest_increasing_sequence")
-    public ResponseEntity<IncreasingSequenceDto> getLongestIncreasingSequence(@RequestBody @Validated(OperationURL.class) FileDto fileDto) {
+    public ResponseEntity<IncreasingSequenceDto> getLongestIncreasingSequence(
+            @RequestBody @Validated(OperationURL.class) FileDto fileDto) {
         return ResponseEntity.ok(listService.getLongestIncreasingSequence(fileDto));
     }
 
     @GetMapping("/get_longest_decreasing_sequence")
-    public ResponseEntity<DecreasingSequenceDto> getLongestDecreasingSequence(@RequestBody @Validated(OperationURL.class) FileDto fileDto) {
+    public ResponseEntity<DecreasingSequenceDto> getLongestDecreasingSequence(
+            @RequestBody @Validated(OperationURL.class) FileDto fileDto) {
         return ResponseEntity.ok(listService.getLongestDecreasingSequence(fileDto));
     }
 
