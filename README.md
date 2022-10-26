@@ -10,26 +10,29 @@
 #### Примеры: #### 
 
 **URL: localhost:8080/file/get_max_value**
+Body:
 ```json
-//Body:
 {
     "file_path" : "C:/10m.txt"
 }
+```
 Response:
-    {
-        "max_value": 49999978
-    }
-
+```json
+{
+    "max_value": 49999978
+}
+```
 **URL: localhost:8080/file/get_max_value**
-
+```json
 Body:
 {
     "file_path" : "C:/10m.txt"
 }
-
+```
 Response:
+```json
 {
     "max_value": 49999978
 }
-
 ```
+
