@@ -4,6 +4,7 @@ import com.example.relex.dto.*;
 import com.example.relex.service.ListService;
 import com.example.relex.validator.OperationParameter;
 import com.example.relex.validator.OperationURL;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/file")
+@Api(value = "/file")
 public class FileController {
 
     private final ListService listService;

@@ -13,6 +13,7 @@ public class ListService {
 
     private final FileService fileService;
 
+
     public Value getValue(FileDto fileDto) {
         return switch (fileDto.getOperation()) {
             case get_max_value -> getMax(fileDto);
@@ -80,7 +81,6 @@ public class ListService {
         int currentFrom = -1;
         int currentTo;
 
-
         for (int i = 1; i < list.size(); i++) {
             if (predicate.test(list.get(i - 1), list.get(i))) {
                 if (currentFrom == -1) {
@@ -89,12 +89,13 @@ public class ListService {
                 if (i == list.size() - 1) {
                     currentTo = list.size();
 
-                    if (currentTo - currentFrom > toIndex - fromIndex) {
-                        fromIndex = currentFrom;
-                        toIndex = currentTo;
-                        lists.clear();
-                        lists.add(list.subList(fromIndex, toIndex));
-                    } else if (currentTo - currentFrom == toIndex - fromIndex) {
+                    int currLength = getLength(currentFrom, currentTo);
+                    int length = getLength(fromIndex, toIndex);
+
+                    if (currLength >= length) {
+                        if (currLength > length) {
+                            lists.clear();
+                        }
                         fromIndex = currentFrom;
                         toIndex = currentTo;
                         lists.add(list.subList(fromIndex, toIndex));
@@ -104,12 +105,14 @@ public class ListService {
                 currentTo = i;
 
                 if (currentFrom != -1) {
-                    if (currentTo - currentFrom > toIndex - fromIndex) {
-                        fromIndex = currentFrom;
-                        toIndex = currentTo;
-                        lists.clear();
-                        lists.add(list.subList(fromIndex, toIndex));
-                    } else if (currentTo - currentFrom == toIndex - fromIndex) {
+
+                    int currLength = getLength(currentFrom, currentTo);
+                    int length = getLength(fromIndex, toIndex);
+
+                    if (currLength >= length) {
+                        if (currLength > length) {
+                            lists.clear();
+                        }
                         fromIndex = currentFrom;
                         toIndex = currentTo;
                         lists.add(list.subList(fromIndex, toIndex));
@@ -119,6 +122,10 @@ public class ListService {
             }
         }
         return lists;
+    }
+
+    private int getLength(int currentFrom, int currentTo) {
+        return currentTo - currentFrom;
     }
 
 
