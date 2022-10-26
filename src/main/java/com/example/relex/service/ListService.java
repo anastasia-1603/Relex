@@ -13,7 +13,6 @@ public class ListService {
 
     private final FileService fileService;
 
-
     public Value getValue(FileDto fileDto) {
         return switch (fileDto.getOperation()) {
             case get_max_value -> getMax(fileDto);
@@ -56,7 +55,6 @@ public class ListService {
                 .mapToInt(a -> a)
                 .average().orElse(0);
         return new MeanDto(mean);
-
     }
 
     public IncreasingSequenceDto getLongestIncreasingSequence(FileDto fileDto) {
@@ -124,9 +122,7 @@ public class ListService {
         return lists;
     }
 
-    private int getLength(int currentFrom, int currentTo) {
-        return currentTo - currentFrom;
+    private int getLength(int from, int to) {
+        return to - from;
     }
-
-
 }
