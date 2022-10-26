@@ -51,6 +51,20 @@ Response:
     "mean_value": 7364.418442641844
 }
 ```
+**URL: localhost:8080/file/get_median_value**
+
+Body:
+```json
+{
+    "file_path" : "C:/10m.txt"
+}
+```
+Response:
+```json
+{
+    "median_value": 25216.0
+}
+```
 **URL: localhost:8080/file/get_longest_increasing_sequence**
 
 Body:
