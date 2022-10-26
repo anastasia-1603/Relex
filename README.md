@@ -12,9 +12,11 @@
 **URL: localhost:8080/file/get_max_value**
 
 Body:
+```json
 {
     "file_path" : "C:/10m.txt"
 }
+```
 
 Response:
     {
