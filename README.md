@@ -10,6 +10,7 @@
 #### Примеры: #### 
 
 **URL: localhost:8080/file/get_max_value**
+
 Body:
 ```json
 {
@@ -23,6 +24,7 @@ Response:
 }
 ```
 **URL: localhost:8080/file/get_min_value**
+
 Body:
 ```json
 {
@@ -36,6 +38,7 @@ Response:
 }
 ```
 **URL: localhost:8080/file/get_mean_value**
+
 Body:
 ```json
 {
@@ -49,6 +52,7 @@ Response:
 }
 ```
 **URL: localhost:8080/file/get_longest_increasing_sequence**
+
 Body:
 ```json
 {
@@ -75,6 +79,7 @@ Response:
 }
 ```
 **URL: localhost:8080/file/get_longest_decreasing_sequence**
+
 Body:
 ```json
 {
@@ -102,13 +107,15 @@ Response:
 }
 ```
 **URL: localhost:8080/file/get_longest_increasing_sequence**
+
 Body:
 ```json
 {
     "file_path" : "C:/file.txt"
 }
-file.txt содержит массив {1, 2, 1, 3, 7, 1, 2, 3}
 ```
+file.txt содержит массив {1, 2, 1, 3, 7, 1, 2, 3}
+
 Response:
 ```json
 {
@@ -127,13 +134,15 @@ Response:
 }
 ```
 **URL: localhost:8080/file/get_longest_decreasing_sequence**
+
 Body:
 ```json
 {
     "file_path" : "C:/file.txt"
 }
-file.txt содержит массив {1, 2, 1, 3, 7, 1, 2, 3}
 ```
+file.txt содержит массив {1, 2, 1, 3, 7, 1, 2, 3}
+
 Response:
 ```json
 {
@@ -150,6 +159,7 @@ Response:
 }
 ```
 **URL: localhost:8080/file/**
+
 Body:
 ```json
 {
